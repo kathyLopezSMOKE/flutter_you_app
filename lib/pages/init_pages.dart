@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_you_app/ui/general/colors.dart';
 
 class InitPage extends StatefulWidget {
   const InitPage({Key? key}): super(key: key);
@@ -21,11 +22,49 @@ class _InitPageState extends State<InitPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: KBrandPrimaryColor,
+        title: Image.asset(
+          'assets/images/logo.png',
+          height: 26,
+        ),
+        actions: [
+          IconButton(
+            onPressed: (){}, 
+            icon: Icon(
+              Icons.cast,
+              color:Colors.white
+            ),
+          ),
+          IconButton(
+            onPressed: (){}, 
+            icon: Icon(
+              Icons.notifications_none,
+              color:Colors.white
+            ),
+          ),
+          IconButton(
+            onPressed: (){}, 
+            icon: Icon(
+              Icons.search,
+              color:Colors.white
+            ),
+          ),
+          const SizedBox( width: 6.0,),
+          CircleAvatar(
+            backgroundColor: Colors.white,
+            radius: 14.0,
+            backgroundImage: NetworkImage("https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg"),
+          ),
+          const SizedBox( width: 12.0,),
+        ],
+      ),
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(0xff212121),
+        backgroundColor: KBrandPrimaryColor,
         selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white70,
+        unselectedItemColor: Colors.white60,
         selectedFontSize: 12.0,
         unselectedFontSize: 12.0,
         type: BottomNavigationBarType.fixed,
