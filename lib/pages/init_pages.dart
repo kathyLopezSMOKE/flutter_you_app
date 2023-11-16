@@ -39,9 +39,26 @@ class _InitPageState extends State<InitPage> {
           ),
           IconButton(
             onPressed: (){}, 
-            icon: Icon(
+            icon: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Icon(
               Icons.notifications_none,
               color:Colors.white
+            ),
+            Positioned(
+              top: -2,
+              right: -4,
+              child: Container(
+                padding: EdgeInsets.all(2.4),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.red,
+                ),
+                child: Text("9+", style: TextStyle(fontSize: 11,),),
+              ),
+            ),
+              ],
             ),
           ),
           IconButton(
@@ -61,10 +78,11 @@ class _InitPageState extends State<InitPage> {
         ],
       ),
       body: _pages[_currentIndex],
+      backgroundColor: KBrandPrimaryColor, //color fondo
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: KBrandPrimaryColor,
         selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white60,
+        unselectedItemColor: Colors.white70,
         selectedFontSize: 12.0,
         unselectedFontSize: 12.0,
         type: BottomNavigationBarType.fixed,
