@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_you_app/pages/home_page.dart';
 import 'package:flutter_you_app/ui/general/colors.dart';
 
 class InitPage extends StatefulWidget {
@@ -13,7 +14,7 @@ class _InitPageState extends State<InitPage> {
   int _currentIndex=0;
 
   List<Widget> _pages=[
-    Center(child: Text("Principal"),),
+    HomePage(),
     Center(child: Text("Short"),),
     Center(child: Text("Agregar"),),
     Center(child: Text("Suscripcion"),),
