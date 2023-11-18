@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_you_app/ui/general/colors.dart';
+import 'package:flutter_you_app/ui/widgets/item_filter_widget.dart';
+import 'package:flutter_you_app/ui/widgets/item_video_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.symmetric(
@@ -14,43 +17,59 @@ class HomePage extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Row(
-              children: [
-                ElevatedButton.icon(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    primary: KBrandSecondaryColor,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 10.0,
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              physics: const BouncingScrollPhysics(),
+              child: Row(
+                children: [
+                  ElevatedButton.icon(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      primary: KBrandSecondaryColor,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 10.0,
+                      ),
+                    ),
+                    icon: const Icon(
+                      Icons.explore_outlined,
+                    ),
+                    label: const Text(
+                      "Explorar",
                     ),
                   ),
-                  icon: const Icon(
-                    Icons.explore_outlined,
-                  ),
-                  label: const Text(
-                    "Explorar",
-                  ),
-                ),
-                const SizedBox(
-                  height: 32.0,
-                  child: VerticalDivider(
-                    color: Colors.white30,
-                    thickness: 1.0,
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(right: 10.0),
-                  child: Chip(
-                    backgroundColor: KBrandSecondaryColor,
-                    labelStyle: TextStyle(
-                      color: Colors.white,
+                  const SizedBox(
+                    height: 32.0,
+                    child: VerticalDivider(
+                      color: Colors.white30,
+                      thickness: 1.0,
                     ),
-                    label: Text("Todos"),
-                  )
-                ),
-              ],
+                  ),
+                  ItemFilterWidget(
+                    text: "Todos",
+                    isSelected: true,
+                  ),
+                  ItemFilterWidget(
+                    text: "Mixes",
+                    isSelected: false,
+                  ),
+                  ItemFilterWidget(
+                    text: "Musica",
+                    isSelected: false,
+                  ),
+                  ItemFilterWidget(
+                    text: "Programacion",
+                    isSelected: false,
+                  ),
+                ],
+              ),
             ),
+            const SizedBox( height: 10.0),
+            ItemVideoWidget(),
+            ItemVideoWidget(),
+            ItemVideoWidget(),
+            ItemVideoWidget(),
+            ItemVideoWidget(),
           ],
         ),
       ),
