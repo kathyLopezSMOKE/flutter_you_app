@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_you_app/models/video_model.dart';
-import 'package:flutter_you_app/pages/videos_detail_page.dart';
+import 'package:flutter_you_app/pages/video_detail_page.dart';
 
 class ItemVideoWidget extends StatelessWidget {
   
@@ -21,7 +21,9 @@ double height = MediaQuery.of(context).size.height;
         Navigator.push(
           context, 
           MaterialPageRoute(
-            builder: (context) => VideoDetailPage(),
+            builder: (context) => VideoDetailPage(
+              videoId: videoModel.id.videoId,
+            ),
           ),
         );
       },
