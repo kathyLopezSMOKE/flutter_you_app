@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_you_app/pages/channel_page.dart';
 import 'package:flutter_you_app/ui/general/colors.dart';
+import 'package:flutter_you_app/ui/widgets/item_video_detail_widget.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class VideoDetailPage extends StatefulWidget {
   String videoId;
-  VideoDetailPage({required this.videoId,});
+  VideoDetailPage({
+    required this.videoId,
+  });
 
   @override
   State<VideoDetailPage> createState() => _VideoDetailPageState();
 }
 
 class _VideoDetailPageState extends State<VideoDetailPage> {
-  
   late YoutubePlayerController _playerController;
 
   @override
   void initState() {
     super.initState();
-    _playerController= YoutubePlayerController(
+    _playerController = YoutubePlayerController(
       initialVideoId: widget.videoId,
       flags: YoutubePlayerFlags(
         autoPlay: true,
@@ -25,13 +28,11 @@ class _VideoDetailPageState extends State<VideoDetailPage> {
         hideControls: false,
       ),
     );
-    
   }
 
   @override
   Widget build(BuildContext context) {
-
-    double height= MediaQuery.of(context).size.height;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: KBrandPrimaryColor,
       body: Column(
@@ -48,6 +49,145 @@ class _VideoDetailPageState extends State<VideoDetailPage> {
               ),
             ),
           ),
+          ListTile(
+            title: Text(
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet viverra arcu.",
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                height: 1.3,
+                color: Colors.white,
+                fontSize: 14.0,
+              ),
+            ),
+            subtitle: Text(
+              "6.5 M de vistas · hace 2 años",
+              style: TextStyle(
+                color: Colors.white54,
+                fontSize: 13,
+              ),
+            ),
+            trailing: Icon(
+              Icons.keyboard_arrow_down,
+              color: Colors.white,
+            ),
+          ),
+          Expanded(child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        ItemVideoDetailWidget(
+                          text: "53 k",
+                          icon: Icons.thumb_up_alt_outlined,
+                        ),
+                        ItemVideoDetailWidget(
+                          text: "No me gusta",
+                          icon: Icons.thumb_down_alt_outlined,
+                        ),
+                        ItemVideoDetailWidget(
+                          text: "Compartir",
+                          icon: Icons.share,
+                        ),
+                        ItemVideoDetailWidget(
+                          text: "Crear",
+                          icon: Icons.play_arrow_rounded,
+                        ),
+                        ItemVideoDetailWidget(
+                          text: "Descargar",
+                          icon: Icons.download_rounded,
+                        ),
+                        ItemVideoDetailWidget(
+                          text: "Compartir",
+                          icon: Icons.share,
+                        ),
+                        ItemVideoDetailWidget(
+                          text: "Crear",
+                          icon: Icons.play_arrow_rounded,
+                        ),
+                        ItemVideoDetailWidget(
+                          text: "Descargar",
+                          icon: Icons.download_rounded,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Divider(
+                  color: Colors.white24,
+                ),
+                ListTile(
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ChannelPage(),
+                      ),
+                    );
+                  },
+                  leading: CircleAvatar(
+                    backgroundColor: Colors.white24,
+                    backgroundImage: NetworkImage(
+                      "https://images.pexels.com/photos/3379933/pexels-photo-3379933.jpeg",
+                    ),
+                  ),
+                  title: Text(
+                    "Lorem ipsum dolor sit amet",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14.0,
+                    ),
+                  ),
+                  subtitle: Text(
+                    "1.43 M de suscriptores",
+                    style: TextStyle(
+                      color: Colors.white70,
+                      fontSize: 12.0,
+                    ),
+                  ),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        "SUSCRITO",
+                        style: TextStyle(
+                          color: Colors.white70,
+                          fontSize: 14.0,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 6.0,
+                      ),
+                      Icon(
+                        Icons.notifications_none,
+                        color: Colors.white70,
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(
+                  color: Colors.white24,
+                ),
+                Container(
+                  height: 200,
+                  color: Colors.indigo,
+                ),
+                Container(
+                  height: 200,
+                  color: Colors.amber,
+                ),
+                Container(
+                  height: 200,
+                  color: Colors.red,
+                ),
+              ],
+            ),
+          )),
         ],
       ),
     );
